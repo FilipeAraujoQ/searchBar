@@ -1,0 +1,301 @@
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+
+
+<div class="container">
+    
+    
+    <div class="search">
+        
+        <a href="" target="_blank" hidden=""></a>
+        
+        <div class="container-search">
+        
+            <input type="search" placeholder="Pesquisar paciente...">     
+           
+            <div class="icon">
+                <ion-icon name="search-outline"></ion-icon>
+            </div>
+        
+        </div>
+        
+        <div class="list">
+             <span>Nomes de pacientes serão adicionados aqui </span>
+        </div>
+        
+        <div class="img-home">
+        
+        <img src="http://neri.saude.ws/wp-content/uploads/2024/04/3d-casual-life-looking-through-resumes-1.png" alt="Imagem de prancheta e papeis de cadastro">
+      
+        </div>
+        
+         
+        <p class="txt-pesquise">Pesquise por um paciente para ver mais informações sobre ele</p>
+        
+        
+    </div>
+   
+   
+</div>
+
+  <script>
+    // Lista de pacientes
+const pacientes = [
+    { cod: 2001001, name: "João da Silva", idade: 35, dataNascimento: "1989-04-20", convenio: "Particular", bairro: "Centro", medicoAssistente: "Dr. Silva" },
+    { cod: 2002001, name: "Maria Oliveira", idade: 28, dataNascimento: "1996-07-15", convenio: "Público", bairro: "Barra", medicoAssistente: "Dra. Santos" },
+    { cod: 2003001, name: "Carlos Souza", idade: 42, dataNascimento: "1982-12-10", convenio: "Particular", bairro: "Copacabana", medicoAssistente: "Dr. Costa" },
+    { cod: 2004001, name: "Ana Pereira", idade: 50, dataNascimento: "1974-09-05", convenio: "Particular", bairro: "Ipanema", medicoAssistente: "Dra. Oliveira" },
+    { cod: 2005001, name: "Fernanda Santos", idade: 23, dataNascimento: "2001-03-18", convenio: "Público", bairro: "Tijuca", medicoAssistente: "Dr. Almeida" },
+    { cod: 2006001, name: "Ricardo Martins", idade: 31, dataNascimento: "1993-10-12", convenio: "Particular", bairro: "Leblon", medicoAssistente: "Dra. Lima" },
+    { cod: 2007001, name: "Patrícia Almeida", idade: 45, dataNascimento: "1979-06-25", convenio: "Público", bairro: "Botafogo", medicoAssistente: "Dr. Ferreira" },
+    { cod: 2008001, name: "Mariana Costa", idade: 39, dataNascimento: "1985-02-28", convenio: "Particular", bairro: "Flamengo", medicoAssistente: "Dra. Pereira" },
+    { cod: 2009001, name: "Felipe Rodrigues", idade: 29, dataNascimento: "1995-08-09", convenio: "Particular", bairro: "Laranjeiras", medicoAssistente: "Dr. Souza" },
+    { cod: 2010001, name: "Juliana Ferreira", idade: 33, dataNascimento: "1991-11-20", convenio: "Público", bairro: "Gávea", medicoAssistente: "Dra. Rodrigues" },
+    { cod: 2011001, name: "Gustavo Lima", idade: 41, dataNascimento: "1983-05-03", convenio: "Particular", bairro: "Jacarepaguá", medicoAssistente: "Dr. Mendes" },
+    { cod: 2012001, name: "Amanda Oliveira", idade: 27, dataNascimento: "1997-01-30", convenio: "Público", bairro: "Santa Teresa", medicoAssistente: "Dra. Fernandes" },
+    { cod: 2013001, name: "Lucas Silva", idade: 36, dataNascimento: "1988-08-22", convenio: "Particular", bairro: "Santa Cruz", medicoAssistente: "Dr. Lima" },
+    { cod: 2014001, name: "Tatiane Santos", idade: 48, dataNascimento: "1976-04-17", convenio: "Público", bairro: "Catete", medicoAssistente: "Dra. Oliveira" },
+    { cod: 2015001, name: "Daniel Pereira", idade: 34, dataNascimento: "1990-03-05", convenio: "Particular", bairro: "Lapa", medicoAssistente: "Dr. Almeida" },
+    { cod: 2016001, name: "Carolina Souza", idade: 30, dataNascimento: "1994-12-07", convenio: "Particular", bairro: "Rocinha", medicoAssistente: "Dra. Costa" },
+    { cod: 2017001, name: "Pedro Martins", idade: 44, dataNascimento: "1980-09-10", convenio: "Particular", bairro: "Irajá", medicoAssistente: "Dr. Silva" },
+    { cod: 2018001, name: "Camila Almeida", idade: 25, dataNascimento: "1999-06-02", convenio: "Público", bairro: "Penha", medicoAssistente: "Dra. Almeida" },
+    { cod: 2019001, name: "Roberto Fernandes", idade: 37, dataNascimento: "1987-02-15", convenio: "Particular", bairro: "Ilha do Governador", medicoAssistente: "Dr. Lima" },
+    { cod: 2020001, name: "Isabela Mendes", idade: 32, dataNascimento: "1992-11-25", convenio: "Particular", bairro: "Realengo", medicoAssistente: "Dra. Santos" },
+    { cod: 2021001, name: "Leandro Oliveira", idade: 43, dataNascimento: "1981-07-08", convenio: "Particular", bairro: "Jardim Botânico", medicoAssistente: "Dr. Costa" },
+    { cod: 2022001, name: "Mariana Lima", idade: 26, dataNascimento: "1998-10-29", convenio: "Público", bairro: "Vila Isabel", medicoAssistente: "Dra. Fernandes" },
+    { cod: 2023001, name: "Antônio Santos", idade: 38, dataNascimento: "1986-05-14", convenio: "Particular", bairro: "Engenho Novo", medicoAssistente: "Dr. Almeida" },
+    { cod: 2024001, name: "Vanessa Costa", idade: 40, dataNascimento: "1984-03-31", convenio: "Particular", bairro: "Leme", medicoAssistente: "Dra. Lima" },
+    { cod: 2025001, name: "Thiago Rodrigues", idade: 22, dataNascimento: "2002-01-18", convenio: "Público", bairro: "Santa Cruz", medicoAssistente: "Dr. Alves" },
+    { cod: 2026001, name: "Patrícia Ferreira", idade: 47, dataNascimento: "1977-12-02", convenio: "Particular", bairro: "Jardim Botânico", medicoAssistente: "Dra. Costa" },
+    { cod: 2027001, name: "Renato Lima", idade: 31, dataNascimento: "1993-08-10", convenio: "Público", bairro: "Lapa", medicoAssistente: "Dr. Mendes" },
+    { cod: 2028001, name: "Laura Almeida", idade: 29, dataNascimento: "1995-07-27", convenio: "Particular", bairro: "Flamengo", medicoAssistente: "Dra. Pereira" },
+    { cod: 2029001, name: "Rodrigo Fernandes", idade: 35, dataNascimento: "1989-05-09", convenio: "Público", bairro: "Centro", medicoAssistente: "Dr. Silva" },
+    { cod: 2030, name: "Carla Mendes", idade: 46, dataNascimento: "1978-11-21", convenio: "Particular", bairro: "Botafogo", medicoAssistente: "Dra. Oliveira" },
+    { cod: 2031001, name: "Luiz Oliveira", idade: 24, dataNascimento: "2000-02-28", convenio: "Público", bairro: "Ipanema", medicoAssistente: "Dr. Almeida" },
+    { cod: 2032001, name: "Aline Costa", idade: 39, dataNascimento: "1985-09-15", convenio: "Particular", bairro: "Jacarepaguá", medicoAssistente: "Dra. Fernandes" },
+    { cod: 2033001, name: "Marcos Santos", idade: 33, dataNascimento: "1991-10-20", convenio: "Particular", bairro: "Barra", medicoAssistente: "Dr. Costa" },
+    { cod: 2034001, name: "Sabrina Lima", idade: 28, dataNascimento: "1996-03-05", convenio: "Público", bairro: "Tijuca", medicoAssistente: "Dra. Santos" },
+    { cod: 2035001, name: "Paulo Rodrigues", idade: 37, dataNascimento: "1987-08-15", convenio: "Particular", bairro: "Leblon", medicoAssistente: "Dr. Lima" },
+    { cod: 2036001, name: "Cristiane Ferreira", idade: 42, dataNascimento: "1982-11-30", convenio: "Público", bairro: "Copacabana", medicoAssistente: "Dra. Pereira" },
+    { cod: 2037001, name: "Marcelo Almeida", idade: 30, dataNascimento: "1994-06-22", convenio: "Particular", bairro: "Flamengo", medicoAssistente: "Dr. Almeida" },
+    { cod: 2038001, name: "Natalia Fernandes", idade: 36, dataNascimento: "1988-04-17", convenio: "Particular", bairro: "Gávea", medicoAssistente: "Dra. Lima" },
+    { cod: 2039001, name: "Rafael Mendes", idade: 41, dataNascimento: "1983-12-05", convenio: "Público", bairro: "Santa Teresa", medicoAssistente: "Dr. Alves" },
+    { cod: 2040001, name: "Sandra Oliveira", idade: 25, dataNascimento: "1999-11-08", convenio: "Particular", bairro: "Jacarepaguá", medicoAssistente: "Dra. Costa" }
+];
+
+    const searchwrapper = document.querySelector('.search');
+    const inputBox = searchwrapper.querySelector('input');
+    const patientsBox = searchwrapper.querySelector('.list');
+    const icon = searchwrapper.querySelector('.icon');
+
+    inputBox.addEventListener('input', (e) => {
+        const userData = e.target.value.trim().toLowerCase();
+        const filteredPatients = pacientes.filter(patient => patient.name.toLowerCase().startsWith(userData));
+        showPatients(filteredPatients);
+    });
+
+    function showPatients(list) {
+    let listData = '';
+    if (list.length) {
+        listData = list.map(data => `<div class="patient">
+                                        <div class="icon-person">
+                                            <ion-icon name="person"></ion-icon>
+                                        </div>
+                                            
+                                            <div class="info">
+                                                <div class="name">${data.name}</div>
+                                                <div class="cod">Atendimento: ${data.cod}</div>
+                                            </div>
+                                                <div class="icon-person-editar">
+                                            <ion-icon name="person"></ion-icon>
+                                        </div>
+                                        <div class="icon-person-hamb">
+                                            <ion-icon name="menu-outline"></ion-icon>
+                                            </div>
+                                        </div>`).join('');
+    } else {
+        listData = '<span>Nenhum paciente encontrado</span>';
+    }
+        patientsBox.innerHTML = "<p class='title-list-pascients'>Listagem de pacientes </p>";
+    patientsBox.innerHTML += listData;
+    patientsBox.classList.toggle('active', !!list.length);
+    }
+
+       patientsBox.addEventListener('click', (e) => {
+        if (e.target.tagName === 'DIV') {
+            inputBox.value = e.target.textContent;
+            patientsBox.classList.remove('active');
+        }
+    });
+        inputBox.addEventListener('input', (e) => {
+            const userData = e.target.value.trim();
+            if (!userData) {
+                patientsBox.innerHTML = '';
+                patientsBox.classList.remove('active');
+            }
+        });
+    </script>
+
+<style>
+   .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0px auto;
+        background-color: #FFF;
+        border-radius: 5px;
+        padding: 20px;
+        width: 100%;
+        max-width: 400px;
+    }
+    
+    .container .search {
+        position: relative;
+        width: 100%;
+    }
+    
+    .container-search{
+         border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
+    .search input[type="search"] {
+        width: calc(100% - 55px);
+        padding: 10px;
+        border: 0px solid #ccc;
+        font-size: 16px;
+        outline: none;
+    }
+    
+    .search .icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+        width: 55px;
+        text-align: center;
+        line-height: 55px;
+        font-size: 20px;
+        color: #3492A2;
+        cursor: pointer;
+    }
+    
+    .list {
+        background-color: #FFF;
+        width: 100%;
+        max-height: 200px;
+        overflow-y: auto;
+        padding: 10px;
+        box-sizing: border-box;
+        display: none;
+    }
+    
+    .list.active {
+        display: block;
+    }
+    
+    .patient {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 5px 0;
+        cursor: pointer;
+    }
+   
+    .title-list-patients {
+        font-size: 16px;
+        font-weight: 400;
+        color: #252525;
+        
+    }
+    
+    .icon-person{
+        background-color: #3492A210;
+        width: 48px;
+        height: 48px;
+        border-radius: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 32px;
+    }
+    
+    .icon-person ion-icon{
+        color: #CCCCCC;
+    }
+    
+    .info .name{
+        font-size: 14px;
+        font-weight: 400;
+        color: #252525;
+    }
+    
+    .info .cod{
+        font-size: 12px;
+        font-weight: 400;
+        color: #25252570;
+        
+    }
+    
+    .icon-person-editar{
+        background-color: #3492A240;
+        width: 20px;
+        height: 20px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+    }
+    
+    .icon-person-editar ion-icon{
+        color: #3492A2;
+    }
+    
+    .icon-person-hamb{
+         background-color: #3492A240;
+        width: 20px;
+        height: 20px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+     .icon-person-hamb ion-icon{
+        color: #3492A2;
+    }
+    
+    .img-home{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-top:50px;
+        margin-bottom: 50px;
+        align-items: center;
+        
+    }
+    
+    .txt-pesquise{
+        text-align: center;
+    }
+    
+    
+    
+    <div class="patient">
+        <div class="icon-person">
+            <ion-icon name="person"></ion-icon>
+        </div>
+            
+            <div class="info">
+                <div class="name">${data.name}</div>
+                <div class="cod">Atendimento: ${data.cod}</div>
+            </div>
+                <div class="icon-person-editar">
+            <ion-icon name="person"></ion-icon>
+        </div>
+        <div class="icon-person-hamb">
+            <ion-icon name="menu-outline"></ion-icon>
+        </div>
+    </div>
+</style>

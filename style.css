@@ -1,0 +1,87 @@
+body,html{
+    margin: 0;
+    padding: 0;
+    background: #e74c3c;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.searchbar{
+    margin: 50px auto 20px auto;
+    height: 60px;
+    width: 40%;
+    background-color: #353b48;
+    border-radius: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.search_input{
+    color: white;
+    border: 0;
+    outline: 0;
+    background: none;
+    padding-left: 30px;
+    font-size: 24px;
+    width: 80%;
+    height: 100%;
+    transition: width 0.4s linear;
+}
+
+.search_icon{
+    height: 40px;
+    width: 40px;
+    margin: auto 20px auto auto;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color:white;
+    text-decoration:none;
+}
+.searchbar:hover > .search_input{
+    caret-color: #ffffff;
+    transition: width 0.4s linear;
+}
+
+.searchbar:hover > .search_icon{
+    background: white;
+    color: #e74c3c;
+}
+
+.list{
+    width: 55%;
+    height: auto;
+    background-color: #b83e31;
+    display: none;
+}
+
+.list.active {
+    display: block;
+}
+
+.card{
+    background: rgb(255, 235, 235);
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    margin: 15px;
+    align-items: center;
+    font-size: 28px;
+}
+
+#name{
+   width: 55%;
+}
+
+#age{
+    width: 20%;
+}
+
+#gender{
+    width: 25%;
+}
